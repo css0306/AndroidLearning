@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vivo11084921.activity">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 这段表示对FirstActivity这个活动进行注册 -->
+        <activity
+            android:name="com.vivo11084921.activity.FirstActivity"
+            android:launchMode="singleTop"
+            android:label="FirstActivity">
+            <intent-filter>
+                <!-- 这一部分表示将该Activity设为主Activity。 -->
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name="com.vivo11084921.activity.SecondActivity">
+            <intent-filter>
+                <action android:name="com.vivo11084921.lifecycle.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.vivo11084921.lifecycle.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.vivo11084921.activity.ThirdActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

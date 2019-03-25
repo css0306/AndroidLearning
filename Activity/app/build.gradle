@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'// 表示这是一个应用程序模块。相对的还有库模块(library)。
+// 应用程序模块可直接运行，库模块只能作为代码库依附于别的应用程序模块来运行。
+
+android { // 安卓闭包，可在其中配置项目构件的各种属性。
+    compileSdkVersion 28 // 指定项目的编译版本。
+    defaultConfig {
+        applicationId "com.vivo11084921.api.lifecycle"
+        minSdkVersion 23 // 指定项目最低兼容版本，15指Android 4.0系统
+        targetSdkVersion 28 // 指在该版本上已做足够测试，系统将为应用启用最新的功能特性。
+        versionCode 1 // 项目的版本号
+        versionName "1.0"// 项目的版本名。这两个属性在生成安装文件的时候非常重要。
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes { //用于指定生成安装文件的相关配置。通常一个debug，一个release。
+        release { // debug指定生成测试版安装文件的配置，release指定生成正式版安装文件的配置。debug可以忽略不写。
+            minifyEnabled false // 是否对项目的代码进行混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //混淆时使用的规则文件
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //本地依赖声明，表示将libs目录下所有.jar后缀的文件都添加到项目的构件路径中。
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3' // 远程依赖库
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
